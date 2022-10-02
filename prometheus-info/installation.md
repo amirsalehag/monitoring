@@ -1,4 +1,4 @@
-# *installing prometheus on ubuntu*
+# *installing prometheus*
 * First make a user and group:
 ```
 sudo useradd -M -r -s /bin/false prometheus
