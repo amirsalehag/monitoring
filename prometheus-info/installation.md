@@ -33,3 +33,36 @@ sudo chown prometheus:prometheus /var/lib/prometheus
 * After these steps, set the prometheuses configuration to read from etc/prometheus
 ```
 prometheus --config.file=/etc/prometheus/prometheus.yml
+```
+Then prometheus starts as a service but in foreground , so we press `ctrl+c` to exit.
+Its better to run it as a systemd service,so follow these steps:
+* First we create the file in systemd directory:
+```
+sudo vim /etc/systemd/system/prometheus.service
+```
+* Then paste this content inside of it:
+```
+[Unit]
+Description=Prometheus processing server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/usr/local/bin/prometheus \
+--config.file /etc/prometheus/prometheus.yml \
+--storage.tsdb.path /var/lib/prometheus/ \
+--web.console.templates=/etc/prometheus/consoles \
+--web.console.libraries=/etc/prometheus/console_libraries
+
+[Install]
+WantedBy=multi-user.target
+```
+* You can `daemon-reload` the systemctl but if you dont want the services to be stopped and started again,
+then just run and start the service.
+```
+sudo systemctl start prometheus
+```
+Its done, you can connect to the prometheus from port `9090`.
