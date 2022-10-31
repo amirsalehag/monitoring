@@ -42,7 +42,7 @@ Fluent Bit is not as pluggable and flexible as Fluentd, which can be integrated 
 We can use both at the same time, in Kubernetes for example, Fluent Bit would be deployed per node as a daemonset, collecting and  
 forwarding data to a Fluentd instance deployed per cluster and acting as an aggregator — processing the data and routing it to different  
 sources based on tags:  
-![image ](https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/06/kuberbetes-monitoring-arch-1.jpg =100x20)  
+![image ](https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/06/kuberbetes-monitoring-arch-1.jpg)  
 Fluent Bit can be used on it own of course but has far less to offer in terms of aggregation capabilities and with a much smaller amount  
 of plugins for integrating with other solutions.  
 
