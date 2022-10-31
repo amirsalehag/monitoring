@@ -1,6 +1,6 @@
 # What is fluentd
 * Fluentd is an open source log collector, processor, and aggregator.Its a one-stop component that can aggregate data  
-from multiple sources, unify the differently formatted data into JSON objects ( and route it to different output destinations.  
+from multiple sources, unify the differently formatted data into JSON objects and route it to different output destinations.  
 * A vanilla Fluentd deployment will run on ~40MB of memory and is capable of processing above 10,000 events per second.  
 Adding new inputs or outputs is relatively simple and has little effect on performance. Fluentd uses disk or memory for buffering  
 and queuing to handle transmission failures or data overload and supports multiple configuration options to ensure a more resilient data pipeline.  
@@ -42,7 +42,7 @@ Fluent Bit is not as pluggable and flexible as Fluentd, which can be integrated 
 We can use both at the same time, in Kubernetes for example, Fluent Bit would be deployed per node as a daemonset, collecting and  
 forwarding data to a Fluentd instance deployed per cluster and acting as an aggregator — processing the data and routing it to different  
 sources based on tags:  
-![image ](https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/06/kuberbetes-monitoring-arch-1.jpg)  
+![image](https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/06/kuberbetes-monitoring-arch-1.jpg)  
 Fluent Bit can be used on it own of course but has far less to offer in terms of aggregation capabilities and with a much smaller amount  
 of plugins for integrating with other solutions.  
 
