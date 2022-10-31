@@ -66,4 +66,13 @@ sudo apt-get update && sudo apt-get install logstash
 ```
 ---
 ## installing fluentd
-Follow these steps from fluentd documentation [link](https://docs.fluentd.org/installation/before-install).
+Click on this [link](https://docs.fluentd.org/installation/before-install) for prerequisites.  
+Follow this [instructions](https://docs.fluentd.org/installation/install-by-deb) for local installation.  
+Follow this [instructions](https://hub.docker.com/_/fluentd) for container installation.  
+
+---
+## installing fluent-bit
+Click on this [link](https://hub.docker.com/r/fluent/fluent-bit) for container installation.  
+Click on this [link](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit) for local installation.  
+
+---
