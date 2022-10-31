@@ -4,7 +4,7 @@ from multiple sources, unify the differently formatted data into JSON objects an
 * A vanilla Fluentd deployment will run on ~40MB of memory and is capable of processing above 10,000 events per second.  
 Adding new inputs or outputs is relatively simple and has little effect on performance. Fluentd uses disk or memory for buffering  
 and queuing to handle transmission failures or data overload and supports multiple configuration options to ensure a more resilient data pipeline.  
-* The Fluentd Docker image includes tags `debian`,`armhf` for ARM base images, `onbuild` to build, and `edge` for testing.  
+
 ---
 # What is fluentbit
 * Fluent Bit is an open source log collector and processor and it was created with a specific use case in mind;  
