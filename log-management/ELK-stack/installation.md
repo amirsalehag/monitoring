@@ -65,3 +65,5 @@ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee 
 sudo apt-get update && sudo apt-get install logstash
 ```
 ---
+## installing fluentd
+Follow these steps from fluentd documentation [link](https://docs.fluentd.org/installation/before-install).
