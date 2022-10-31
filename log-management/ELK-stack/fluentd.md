@@ -1,6 +1,6 @@
 # What is fluentd
 * Fluentd is an open source log collector, processor, and aggregator.Its a one-stop component that can aggregate data  
-from multiple sources, unify the differently formatted data into JSON objects and route it to different output destinations.  
+from multiple sources, unify the differently formatted data into JSON objects ( and route it to different output destinations.  
 * A vanilla Fluentd deployment will run on ~40MB of memory and is capable of processing above 10,000 events per second.  
 Adding new inputs or outputs is relatively simple and has little effect on performance. Fluentd uses disk or memory for buffering  
 and queuing to handle transmission failures or data overload and supports multiple configuration options to ensure a more resilient data pipeline.  
@@ -45,3 +45,9 @@ sources based on tags:
 ![image ](https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/06/kuberbetes-monitoring-arch-1.jpg =100x20)  
 Fluent Bit can be used on it own of course but has far less to offer in terms of aggregation capabilities and with a much smaller amount  
 of plugins for integrating with other solutions.  
+
+---
+* Fluentd has 9 types of plugins; `Input`,`Parser`,`Filter`,`Output`,`Formatter`,`Storage`,`Service Discovery`,`Buffer`,`Metrics`.  
+* The configuration file is the fundamental piece to connect all things together, as it allows to define which Inputs or listeners Fluentd  
+will have and set up common matching rules to route the Event data to a specific Output.  
+Its also important to put the config sections in the right order that we want. Each section will be considered before proceeding.  
