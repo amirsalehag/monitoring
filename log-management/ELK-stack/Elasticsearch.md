@@ -31,3 +31,11 @@ as labels or write a `daemon.json` config for it to be considered for all the co
 check out this [document](https://www.elastic.co/guide/en/beats/loggingplugin/7.6/log-driver-usage-examples.html) for more detail.  
 
 ---
+# ES not stay's up as container
+When setting up ES as container for the first time, if the node goes down the second it comes up, it might be because of this:  
+```
+sudo sysctl -w vm.max_map_count=262144
+```
+it might be the answer to the issue.  
+
+---
