@@ -1,5 +1,5 @@
 # *what is elasticsearch*
-elasticsearch is where we store , search and analyse our data.
+Elasticsearch is where we store , search and analyse our data. It allows you to store, search, and analyze huge volumes of data quickly and in near real-time and give back answers in milliseconds. It’s able to achieve fast search responses because instead of searching the text directly, it searches an index. It uses a structure based on documents instead of tables and schemas and comes with extensive REST APIs for storing and searching the data. At its core, you can think of Elasticsearch as a server that can process JSON requests and give you back JSON data.
 
 ---
 # write access for elastic user
@@ -10,7 +10,7 @@ mkdir esdatadir
 chmod g+rwx esdatadir
 chgrp 0 esdatadir
 ```
-because elastic user is a part of a group called "0" , we can just use that as its permission.  
+Because elastic user is a part of a group called "0" , we can just use that as its permission.  
 
 ---
 # docker container logs
@@ -40,11 +40,45 @@ it might be the answer to the issue.
 
 ---
 # configuring ES
-We can use its configuration file for configuring ES, or we can dynamically change its configuration through its API,
+Most Elasticsearch configuration can take place in the cluster settings API. Certain operations require you to modify elasticsearch.yml and restart the cluster.Whenever possible, use the cluster settings API instead, `elasticsearch.yml` is local to each node, whereas the API applies the setting to all nodes in the cluster.  
+Three categories of setting exist in the cluster settings API: persistent, transient, and default. Persistent settings, well, persist after a cluster restart. After a restart, Elasticsearch clears transient settings.  
+To change a setting, just specify the new one as either persistent or transient. This example shows the flat settings form:  
+```
+PUT /_cluster/settings
+{
+  "persistent" : {
+    "action.auto_create_index" : false
+  }
+}
+```
+You can also use the expanded form, which lets you copy and paste from the GET response and change existing values:  
+```
+PUT /_cluster/settings
+{
+  "persistent": {
+    "action": {
+      "auto_create_index": false
+    }
+  }
+}
+```
+---
+# ES data architecture and how it organizes data
+* Document:  
+Documents are the basic unit of information that can be indexed in Elasticsearch expressed in JSON, which is the global internet data interchange format. You can think of a document like a row in a relational database, representing a given entity — the thing you’re searching for. In Elasticsearch, a document can be more than just text, it can be any structured data encoded in JSON. That data can be things like numbers, strings, and dates. Each document has a unique ID and a given data type, which describes what kind of entity the document is.  
+* Index:  
+An index is a collection of documents that have similar characteristics. An index is the highest level entity that you can query against in Elasticsearch. You can think of the index as being similar to a database in a relational database schema. Any documents in an index are typically logically related. In the context of an e-commerce website, for example, you can have an index for Customers, one for Products, one for Orders, and so on. An index is identified by a name that is used to refer to the index while performing indexing, search, update, and delete operations against the documents in it.  
+
+---
+# Node
+A node is a single server that is a part of a cluster. A node stores data and participates in the cluster’s indexing and search capabilities. An Elasticsearch node can be configured in different ways:  
+* Master Node — Controls the Elasticsearch cluster and is responsible for all cluster-wide operations like creating/deleting an index and adding/removing nodes.
+* Data Node — Stores data and executes data-related operations such as search and aggregation.
+We also always need a master node and a data node. Check out this [document](https://www.elastic.co/guide/en/elasticsearch/reference/8.5/modules-node.html) for more information.  
 
 ---
 # shards in ES
-Data in an Elasticsearch index can grow to massive proportions. In order to keep it manageable, it is split into a number of shards. Each Elasticsearch shard is an Apache Lucene index, with each individual Lucene index containing a subset of the documents in the Elasticsearch index. Splitting indices in this way keeps resource usage under control.The number of shards is set when an index is created, and this number cannot be changed later without reindexing the data. When creating an index, you can set the number of shards and replicas as properties of the index using:  
+Data in an Elasticsearch index can grow to massive proportions. In order to keep it manageable, it is split into a number of shards. Elasticsearch provides the ability to subdivide the index into multiple pieces called shards. Splitting indices in this way keeps resource usage under control.The number of shards is set when an index is created, and this number cannot be changed later without reindexing the data. When creating an index, you can set the number of shards and replicas as properties of the index using:  
 ```
 PUT /sensor
 {
