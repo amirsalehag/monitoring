@@ -41,3 +41,26 @@ it might be the answer to the issue.
 ---
 # configuring ES
 We can use its configuration file for configuring ES, or we can dynamically change its configuration through its API,
+
+---
+# shards in ES
+Data in an Elasticsearch index can grow to massive proportions. In order to keep it manageable, it is split into a number of shards. Each Elasticsearch shard is an Apache Lucene index, with each individual Lucene index containing a subset of the documents in the Elasticsearch index. Splitting indices in this way keeps resource usage under control.The number of shards is set when an index is created, and this number cannot be changed later without reindexing the data. When creating an index, you can set the number of shards and replicas as properties of the index using:  
+```
+PUT /sensor
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 6,
+            "number_of_replicas" : 2
+        }
+    }
+}
+```
+Generally, an optimal shard should hold 30-50GB of data. For example, if you expect to accumulate around 300GB of application logs in a day, having around 10 shards in that index would be reasonable.  
+
+---
+# replicas in ES
+There are thus two types of shards, the primary shard and a replica, or copy. Each replica is located on a different node, which ensures access to your data in the event of a node failure. In addition to providing redundancy and their role in preventing data loss and downtime, replicas can also help boost search performance by allowing queries to be processed in parallel with the primary shard, and therefore faster.  
+If a primary shard becomes unavailable—for example, due to a node disconnection or hardware failure—a replica is promoted to take over its role.  
+
+---
