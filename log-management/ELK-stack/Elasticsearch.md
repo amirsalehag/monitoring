@@ -39,3 +39,5 @@ sudo sysctl -w vm.max_map_count=262144
 it might be the answer to the issue.  
 
 ---
+# configuring ES
+We can use its configuration file for configuring ES, or we can dynamically change its configuration through its API,
