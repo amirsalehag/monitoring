@@ -105,3 +105,10 @@ GET _cat/snapshots/<repo name>
 ```
 and then we might get an error about the snapshot being disabled , we need to recreate the repository with the same name and then we might need to recreate the snapshot name as well, and after that we can see the snapshot contents and we can restore it to our second cluster.  
 You can check out these links for more information([how to restore snapshot](https://kifarunix.com/restore-elasticsearch-snapshot-to-another-cluster/) , [why theres an error about the repository](https://www.elastic.co/guide/en/elasticsearch/reference/8.5/add-repository.html))
+
+---
+# repository
+When registering a repository first we need to config each elasticsearch nodes `path.repo` to a directory and then when creating a repository,  
+we can specify a directory inside the path and then take snapshots on that path to be specific.  
+
+---
