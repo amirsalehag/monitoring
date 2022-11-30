@@ -91,6 +91,7 @@ PUT /sensor
 }
 ```
 Generally, an optimal shard should hold 30-50GB of data. For example, if you expect to accumulate around 300GB of application logs in a day, having around 10 shards in that index would be reasonable.  
+Index sharding is a process that splits the documents in an index into smaller partitions. These smaller partitions are called shards. The result is that instead of all documents being in one large index, documents are distributed between shards.
 
 ---
 # replicas in ES
