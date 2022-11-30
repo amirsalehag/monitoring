@@ -97,6 +97,7 @@ Index sharding is a process that splits the documents in an index into smaller p
 # replicas in ES
 There are thus two types of shards, the primary shard and a replica, or copy. Each replica is located on a different node, which ensures access to your data in the event of a node failure. In addition to providing redundancy and their role in preventing data loss and downtime, replicas can also help boost search performance by allowing queries to be processed in parallel with the primary shard, and therefore faster.  
 If a primary shard becomes unavailable—for example, due to a node disconnection or hardware failure—a replica is promoted to take over its role.  
+Also worth noting that a primary and its replica shard(s) can never be located on the same node.  
 
 ---
 # restore another clusters snapshot to another cluster
