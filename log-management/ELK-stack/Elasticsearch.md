@@ -114,3 +114,4 @@ When registering a repository first we need to config each elasticsearch nodes `
 we can specify a directory inside the path and then take snapshots on that path to be specific.  
 
 ---
+*‌ You should avoid sending client requests to just one of your nodes. If you do and this node fails, such requests will not receive responses even if the remaining node is a healthy cluster on its own. Ideally, you should balance your client requests across both nodes. A good way to do this is to specify the addresses of both nodes when configuring the client to connect to your cluster. Alternatively, you can use a resilient load balancer to balance client requests across the nodes in your cluster.
