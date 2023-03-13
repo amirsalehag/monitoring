@@ -101,7 +101,7 @@ Also worth noting that a primary and its replica shard(s) can never be located o
 
 ---
 # restore another clusters snapshot to another cluster
-When doing that, we first make a repository and then take a snapshot from cluster A with a specific name just to remember it, and then do the same thing with the same name as the cluster A's repo and snapshot on cluster B, and then move the repositories snapshot content somewhere else and then copy the cluster A's snapshot to cluster B's snapshot directory and then restart its cluster. And then delete the repo, make it exactly the same way and name, and after that you can check the repositories snapshot name with this command:  
+When doing that, we first make a repository and then take a snapshot from cluster A with a specific name just to remember it, and then do the same thing with the same name as the cluster A's repo and snapshot on cluster B, and then move the repositories snapshot content somewhere else and then copy the cluster A's snapshot to cluster B's snapshot directory. And then delete the repo, make it exactly the same way and name, and after that you can check the repositories snapshot name with this command:  
 ```
 GET _cat/snapshots/<repo name>
 ```
