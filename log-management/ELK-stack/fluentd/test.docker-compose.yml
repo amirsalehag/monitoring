@@ -20,17 +20,14 @@ services:
     container_name: fluentd-server
     volumes:
       - ./fluentd/conf:/fluentd/etc
+      - /data/elastic/certs/ca:/fluentd/certs/ca
     ports:
-      - "24230:24230"
-      - "24230:24230/udp"
       - "24224:24224"
       - "24224:24224/udp"
-      - "8888:8888"
-      - "8888:8888/udp"
     networks:
       - efk
+
 networks:
   efk:
     external: true
     name: efk
-    ######## network better to be same as elasticsearch networks.
