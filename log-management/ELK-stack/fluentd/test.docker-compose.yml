@@ -18,6 +18,8 @@ services:
     #    build: ./fluentd
     image: fluentd:v1
     container_name: fluentd-server
+    environment:
+      - TZ=Asia/Tehran
     volumes:
       - ./fluentd/conf:/fluentd/etc
       - /data/elastic/certs/ca:/fluentd/certs/ca
