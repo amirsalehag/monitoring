@@ -7,3 +7,8 @@ fluentd too. and specify it in its config file:
 ```
 and also give the cert directory permissions for fluentd user (uid = 999).  
 
+# healthcheck
+```
+curl --fail http://localhost:24225 || exit 1
+```
+but remember that it have to have the curl command installed on the image.  
