@@ -27,6 +27,12 @@ services:
       - "24224:24224"
       - "24224:24224/udp"
       - "24225:24225"
+    healthcheck:
+      test: curl --fail -s http://localhost:24225 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 2
+      start_period: 10s
     networks:
       - efk
 
