@@ -13,3 +13,5 @@ sudo chown 1000:1000 /data/eslog
 sudo setfacl -Rm u:999:rwx /data/certs/
 ```
 * If the fluentd image user is set to other users then the uid should be something else.
+---
+* Beacause the stack has a single node elastic.. remeber to make a index template that sets the indexes created by fluends replica number to 0.
